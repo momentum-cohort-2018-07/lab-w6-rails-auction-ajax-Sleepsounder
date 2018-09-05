@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      render :show, notice: 'Item was successfully created.'
+      redirect_to items_path, notice: 'Item was successfully created.'
     else
       render :new
     end
@@ -46,6 +46,6 @@ class ItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def item_params
-      params.require(:item).permit(:title, :description, :starting_bid, :image_url)
+      params.require(:item).permit(:title, :artist, :description, :starting_bid, :image_url)
     end
 end
